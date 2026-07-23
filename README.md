@@ -6,6 +6,6 @@ git clone https://github.com/auxmeet/bspwm-dotfiles.git
 
 cd bspwm-dotfiles 
 
-sudo bash install.sh
+sudo -E install.sh
 
 bash other.sh
