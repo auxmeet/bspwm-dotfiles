@@ -1,2 +1,2 @@
-* my dotfiles for bpswm and other
+# my dotfiles for bpswm and other
   
