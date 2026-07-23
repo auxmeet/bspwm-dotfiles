@@ -7,7 +7,7 @@ NC='\033[0m'
 
 echo -e "${YELLOW}Установка утилит и dotfiles...${NC}"
 
-# Список утилит для установки
+# Список утилит для установки (пробелы в начале удалены)
 PACKAGESPACMAN=(
     "bspwm"
     "sxhkd"
@@ -30,7 +30,7 @@ PACKAGESPACMAN=(
 echo -e "${YELLOW}Обновление pacman...${NC}"
 sudo pacman -Syu --noconfirm
 
-# Установка утилит
+# Установка утилит через официальный менеджер пакетов
 echo -e "${YELLOW}Установка утилит...${NC}"
 for package in "${PACKAGESPACMAN[@]}"; do
     echo "Установка $package..."
@@ -46,11 +46,11 @@ PACKAGESPARU=(
     "picom-ftlabs-git"
 )
 
-# Обновление пакетов
+# Обновление пакетов AUR
 echo -e "${YELLOW}Обновление paru...${NC}"
 paru -Syu --noconfirm
 
-# Установка утилит
+# Установка утилит из AUR (выполняется БЕЗ sudo)
 echo -e "${YELLOW}Установка утилиты picom-ftlabs-git и обоев${NC}"
 for package in "${PACKAGESPARU[@]}"; do
     echo "Установка $package..."
@@ -62,11 +62,14 @@ for package in "${PACKAGESPARU[@]}"; do
     fi
 done
 
+# Копирование обоев в пространство пользователя
 echo -e "${YELLOW}Копирование обоев..${NC}"
-mkdir -p ~/wallpapers/
-cp wall.jpg ~/wallpapers/
+mkdir -p "$HOME/wallpapers/"
+cp wall.jpg "$HOME/wallpapers/"
 
-# Копирование dotfiles
+# Копирование dotfiles БЕЗ использования sudo
 echo -e "${YELLOW}Копирование конфигов...${NC}"
-sudo cp -r bspwm dunst kitty picom polybar rofi sxhkd ~/.config/
+mkdir -p "$HOME/.config/"
+cp -r bspwm dunst kitty picom polybar rofi sxhkd "$HOME/.config/"
+
 echo -e "${GREEN}✓ Все готово!${NC}"
