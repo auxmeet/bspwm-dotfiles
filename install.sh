@@ -7,6 +7,8 @@ NC='\033[0m'
 
 echo -e "${YELLOW}Установка утилит и dotfiles...${NC}"
 
+su
+
 # Список утилит для установки
 PACKAGESPACMAN=(
     "bspwm"
