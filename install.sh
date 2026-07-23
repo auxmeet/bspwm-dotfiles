@@ -56,7 +56,7 @@ paru -Syu --noconfirm
 # Установка утилит
 echo -e "${YELLOW}Установка утилит...${NC}"
     echo "Установка picom-ftlabs-git..."
-    pacman -S picom-ftlabs-git --noconfirm
+    paru -S picom-ftlabs-git --noconfirm
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✓ picom-ftlabs-git установлен${NC}"
     else
