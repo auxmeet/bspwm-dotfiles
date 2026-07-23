@@ -1,0 +1,102 @@
+configuration {
+    modi: "drun,run";
+    font: "Monospace 11";
+    show-icons: true;
+    icon-theme: "Adwaita";
+    terminal: "kitty";
+    drun-display-format: "{name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+
+    display-drun: "  ";
+    display-run: "  ";
+    display-window: "  ";
+}
+
+@theme "/dev/null"
+
+* {
+    /* Colors */
+    bg:          #2a0c00;
+    bg-sel:      #f44d0f;
+    fg:          #f7d6c8;
+    fg-sel:      #2a0c00;
+    accent:      #f44d0f;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    background-color: @bg;
+    border:           1px;
+    border-color:     #f44d0f;
+    border-radius:    0px;
+    width:            550px;
+    padding:          15px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: #2a0c00;
+    border-radius:    0px;
+    padding:          10px 16px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+    margin:     0px 5px 0px 0px;
+}
+
+entry {
+    text-color:        @accent;
+    placeholder:       "Search...";
+    placeholder-color: @accent;
+}
+
+listview {
+    fixed-height: 0;
+    lines:        8;
+    scrollbar:    false;
+    spacing:      6px;
+}
+
+element {
+    padding:       10px 14px;
+    border-radius: 0px;
+    spacing:       12px;
+}
+
+element-text, element-icon {
+    background-color: transparent;
+    text-color:       inherit;
+}
+
+element-icon {
+    size:             24px;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    alpha:            0.6;
+}
+
+element-icon selected {
+    alpha:            1.0;
+}
+
+element normal text {
+    text-color: @fg;
+}
+
+element selected {
+    background-color: @bg-sel;
+}
+
+element selected text {
+    text-color: @fg-sel;
+}

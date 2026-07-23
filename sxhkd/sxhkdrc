@@ -1,0 +1,55 @@
+# kitty
+super + Return
+    kitty
+
+# close
+super + shift + q
+    bspc node -c
+
+# reload
+super + shift + r
+    bspc wm -r; pkill -USR1 -x sxhkd
+
+# rofi
+super + d
+    rofi -show drun
+
+# thunar
+super + e
+    thunar
+
+# quit
+super + shift + p
+    bspc quit
+
+# audio
+XF86AudioRaiseVolume
+    wpctl set-volume -l 10.0 @DEFAULT_AUDIO_SINK@ 10%+
+XF86AudioLowerVolume
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
+XF86AudioMute
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+# screenshot
+super + shift + d
+    maim /tmp/tempsc.png && xclip -selection clipboard -t image/png -in /tmp/tempsc.png && rm /tmp/tempsc.png &
+super + shift + s
+    maim -o -s /tmp/tempsc.png && xclip -selection clipboard -t image/png -in /tmp/tempsc.png && rm /tmp/tempsc.png &
+
+# focus
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+
+# move
+super + shift + {Left,Down,Up,Right}
+    bspc node -s {west,south,north,east}
+
+# workspaces
+super + {1-9,0}
+    bspc desktop -f {1-9,10}
+
+super + shift + {1-9,0}
+    bspc node -d {1-9,10}
+
+super + {t,f,s}
+    bspc node -t {tiled,fullscreen,floating}
