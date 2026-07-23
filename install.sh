@@ -11,7 +11,6 @@ echo -e "${YELLOW}Установка утилит и dotfiles...${NC}"
 PACKAGES=(
     "bspwm"
     "sxhkd"
-    "git"
     "rofi"
     "udiskie"
     "udisks2"
