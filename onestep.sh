@@ -28,7 +28,7 @@ PACKAGESPACMAN=(
 
 # Обновление пакетов
 echo -e "${YELLOW}Обновление pacman...${NC}"
-sudo pacman -Syu --noconfirm
+pacman -Syu --noconfirm
 
 # Установка утилит через официальный менеджер пакетов
 echo -e "${YELLOW}Установка утилит...${NC}"
