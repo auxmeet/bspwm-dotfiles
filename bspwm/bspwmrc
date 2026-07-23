@@ -37,7 +37,7 @@ setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle" &
 xsetroot -cursor_name left_ptr &
 
 # feh
-feh --bg-fill ~/wallpapers/wall.jpg &
+feh --bg-fill /home/$USER/wallpapers/wall.jpg &
 
 # picom
 picom -b &
@@ -46,4 +46,4 @@ picom -b &
 udiskie -t &
 
 # polybar
-~/.config/polybar/launch.sh &
+/home/$USER/.config/polybar/launch.sh &
