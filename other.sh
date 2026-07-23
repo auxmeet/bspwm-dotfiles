@@ -25,8 +25,6 @@ for package in "${PACKAGES[@]}"; do
     fi
 done
 
-echo -e "${YELLOW}Установка обоев${NC}"
-
 echo -e "${YELLOW}Копирование обоев..${NC}"
 mkdir -p ~/wallpapers/
 cp wall.jpg ~/wallpapers/
