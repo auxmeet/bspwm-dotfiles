@@ -54,7 +54,7 @@ echo -e "${YELLOW}У вас уже установлен пакет paru!${NC}"
 echo -e "${YELLOW}Выполните paru -S picom-ftlabs-git${NC}"
 # Копирование dotfiles
 echo -e "${YELLOW}Копирование конфигов...${NC}"
-cp -r bpswm ~/.config/bspwm/
+cp -r bspwm ~/.config/bspwm/
 cp -r dunst ~/.config/dunst/
 cp -r polybar ~/.config/polybar/
 cp -r picom ~/.config/picom/
