@@ -66,7 +66,6 @@ cp -r kitty ~/.config/kitty/
 cp -r fastfetch ~/.config/fastfetch/
 cp -r rofi ~/.config/rofi/
 echo -e "${YELLOW}Копирование обоев..${NC}"
-mkdir -p /home/$USER/wallpapers/
-cp wall.jpg /home/$USER/wallpapers/
-
+mkdir -p ~/wallpapers/
+cp wall.jpg ~/wallpapers/
 echo -e "${GREEN}✓ Все готово!${NC}"
