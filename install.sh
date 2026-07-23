@@ -27,6 +27,7 @@ PACKAGES=(
     "paru"
 )
 
+
 PACKAGESPARU=(
     "picom-ftlabs-git"
 )
@@ -53,8 +54,23 @@ for package in "${PACKAGES[@]}"; do
     fi
 done
 
-echo -e "${YELLOW}У вас уже установлен пакет paru!${NC}"
-echo -e "${YELLOW}Выполните paru -S picom-ftlabs-git${NC}"
+
+# Обновление пакетов
+echo -e "${YELLOW}Обновление pacman...${NC}"
+paru -Syu --noconfirm
+
+# Установка утилит
+echo -e "${YELLOW}Установка утилит...${NC}"
+for package in "${PACKAGESPARU[@]}"; do
+    echo "Установка $package..."
+    pacman -S "$package" --noconfirm
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✓ $package установлен${NC}"
+    else
+        echo -e "${RED}✗ Ошибка при установке $package${NC}"
+    fi
+done
+
 # Копирование dotfiles
 echo -e "${YELLOW}Копирование конфигов...${NC}"
 cp -r bspwm ~/.config/bspwm/
