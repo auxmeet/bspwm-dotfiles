@@ -13,6 +13,8 @@ PACKAGES=(
     "sxhkd"
     "git"
     "rofi"
+    "udiskie"
+    "udisks2"
     "polybar"
     "wget"
     "kitty"
