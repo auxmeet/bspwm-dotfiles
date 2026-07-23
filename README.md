@@ -8,4 +8,4 @@ cd bspwm-dotfiles
 
 sudo -E /.install.sh
 
-bash other.sh
+/.other.sh
