@@ -7,7 +7,6 @@ NC='\033[0m'
 
 echo -e "${YELLOW}Установка утилит и dotfiles...${NC}"
 
-# Список утилит для установки (пробелы в начале удалены)
 PACKAGESPACMAN=(
     "bspwm"
     "sxhkd"
@@ -26,11 +25,9 @@ PACKAGESPACMAN=(
     "paru"
 )
 
-# Обновление пакетов
 echo -e "${YELLOW}Обновление pacman...${NC}"
 pacman -Syu --noconfirm
 
-# Установка утилит через официальный менеджер пакетов
 echo -e "${YELLOW}Установка утилит...${NC}"
 for package in "${PACKAGESPACMAN[@]}"; do
     echo "Установка $package..."
