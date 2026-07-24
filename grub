@@ -1,0 +1,19 @@
+GRUB_DEFAULT=0
+GRUB_TIMEOUT='0'
+GRUB_DISTRIBUTOR='CachyOS'
+GRUB_CMDLINE_LINUX_DEFAULT='nvidia-drm.modeset=1 idle=nomwait nvidia_drm.fbdev=1 rcu_nocbs=0-11 rootflags=rw nowatchdog mitigations=off libahci.ignore_sss=1 nvme_load=YES splash quiet loglevel=3'
+GRUB_CMDLINE_LINUX=""
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_TERMINAL_INPUT=console
+#GRUB_TERMINAL_OUTPUT=console
+GRUB_GFXMODE=auto
+GRUB_GFXPAYLOAD_LINUX=keep
+#GRUB_DISABLE_LINUX_UUID=true
+GRUB_DISABLE_RECOVERY='true'
+GRUB_THEME='/usr/share/grub/themes/cachyos/theme.txt'
+#GRUB_SAVEDEFAULT=true
+GRUB_DISABLE_SUBMENU='false'
+GRUB_DISABLE_OS_PROBER='false'
+GRUB_EARLY_INITRD_LINUX_STOCK=''
+GRUB_TOP_LEVEL='/boot/vmlinuz-linux-cachyos'
