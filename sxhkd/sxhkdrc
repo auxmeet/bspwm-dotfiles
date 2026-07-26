@@ -18,13 +18,6 @@ super + d
 super + e
     thunar
 
-# poweroff
-super + m
-	poweroff
-# reboot
-super + n
-	reboot
-
 # helium browser
 super + h
     helium-browser
