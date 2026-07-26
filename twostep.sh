@@ -9,7 +9,7 @@ PACKAGESPARU=(
 )
 echo -e "${YELLOW}Update paru...${NC}"
 paru -Syu --noconfirm
-echo -e "${YELLOW}Install picom-ftlabs-git${NC}"
+echo -e "${YELLOW}Install picom-ftlabs-git and set wallpaper...${NC}"
 for package in "${PACKAGESPARU[@]}"; do
     echo "Установка $package..."
     paru -S "$package" --noconfirm
