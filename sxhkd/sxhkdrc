@@ -23,14 +23,14 @@ super + h
     helium-browser
 
 # quit
-super + shift + p
+super + p
     bspc quit
 
 # audio
 XF86AudioRaiseVolume
-    wpctl set-volume -l 10.0 @DEFAULT_AUDIO_SINK@ 10%+
+    wpctl set-volume -l 10.0 @DEFAULT_AUDIO_SINK@ 5%+
 XF86AudioLowerVolume
-    wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 XF86AudioMute
     wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
