@@ -7,7 +7,7 @@ super + q
     bspc node -c
 
 # reload
-super + shift + r
+super + r
     bspc wm -r; pkill -USR1 -x sxhkd
 
 # rofi
