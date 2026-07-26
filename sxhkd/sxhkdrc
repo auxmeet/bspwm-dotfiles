@@ -3,7 +3,7 @@ super + Return
     kitty
 
 # close
-super + shift + q
+super + q
     bspc node -c
 
 # reload
@@ -17,6 +17,10 @@ super + d
 # thunar
 super + e
     thunar
+
+# helium browser
+super + h
+    helium-browser
 
 # quit
 super + shift + p
