@@ -18,6 +18,14 @@ super + d
 super + e
     thunar
 
+# systemctl 
+# poweroff
+super + m
+	systemctl poweroff
+# reboot
+super + n
+	systemctl reboot
+
 # helium browser
 super + h
     helium-browser
