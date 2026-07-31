@@ -1,3 +1,5 @@
+# rofi version 2.0.0-dirty
+# config by auxmeet
 configuration {
     modi: "drun,run";
     font: "Monospace 11";
