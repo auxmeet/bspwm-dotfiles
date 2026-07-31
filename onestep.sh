@@ -22,8 +22,12 @@ PACKAGESPACMAN=(
     "xorg-xrandr"
     "xorg-xinit"
     "xorg-server"
-    "paru"
+    "base-devel"
 )
+echo -e "${YELLOW}Installing paru...${NC}"
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 echo -e "${YELLOW}Update pacman...${NC}"
 pacman -Syu --noconfirm --noprogressbar --needed
 echo -e "${YELLOW}Installing utilities...${NC}"
