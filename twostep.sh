@@ -3,6 +3,10 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
+echo -e "${YELLOW}Installing paru...${NC}"
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 echo -e "${YELLOW}Install picom-ftlabs-git and set wallpaper...${NC}"
 PACKAGESPARU=(
     "picom-ftlabs-git"
