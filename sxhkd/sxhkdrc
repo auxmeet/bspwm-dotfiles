@@ -1,3 +1,6 @@
+# sxhkd version ?
+# config by auxmeet
+
 # kitty
 super + Return
     kitty
