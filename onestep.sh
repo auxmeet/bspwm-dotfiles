@@ -19,6 +19,9 @@ PACKAGESPACMAN=(
     "xclip"
     "fastfetch"
     "xorg-xsetroot"
+    "xorg-xrandr"
+    "xorg-xinit"
+    "xorg-server"
     "paru"
 )
 echo -e "${YELLOW}Update pacman...${NC}"
