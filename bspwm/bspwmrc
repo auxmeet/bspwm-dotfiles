@@ -1,5 +1,5 @@
 #!/bin/sh
-# bspwm v 0.9.12
+# bspwm version 0.9.12
 # config by auxmeeеt
 
 # sxhkd
@@ -25,7 +25,7 @@ bspc rule -a pavucontrol state=floating
 # dbus
 dbus-update-activation-environment --systemd --all &
 
-# xdg
+# xdg-desktop-portal
 /usr/lib/xdg-desktop-portal &
 /usr/lib/xdg-desktop-portal-gtk &
 
