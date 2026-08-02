@@ -25,7 +25,7 @@ PACKAGESPACMAN=(
     "base-devel"
 )
 echo -e "${YELLOW}Update pacman...${NC}"
-pacman -Syu --noconfirm --noprogressbar --needed
+pacman -Syu --noconfirm --needed
 echo -e "${YELLOW}Installing utilities...${NC}"
 for package in "${PACKAGESPACMAN[@]}"; do
     echo "Installing $package..."
