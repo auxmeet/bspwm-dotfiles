@@ -29,7 +29,7 @@ pacman -Syu --noconfirm --noprogressbar --needed
 echo -e "${YELLOW}Installing utilities...${NC}"
 for package in "${PACKAGESPACMAN[@]}"; do
     echo "Installing $package..."
-    sudo pacman -S "$package" --noconfirm --noprogressbar --needed
+    sudo pacman -S "$package" --noconfirm --needed
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✓ $package installed${NC}"
     else
