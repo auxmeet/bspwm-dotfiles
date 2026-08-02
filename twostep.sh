@@ -12,11 +12,11 @@ PACKAGESPARU=(
     "picom-ftlabs-git"
 )
 echo -e "${YELLOW}Update paru...${NC}"
-paru -Syu --noconfirm --noprogressbar --needed
+paru -Syu --noconfirm --needed
 echo -e "${YELLOW}Install picom-ftlabs-git and set wallpaper...${NC}"
 for package in "${PACKAGESPARU[@]}"; do
     echo "Установка $package..."
-    paru -S "$package" --noconfirm --noprogressbar --needed
+    paru -S "$package" --noconfirm --needed
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✓ $package installed${NC}"
     else
