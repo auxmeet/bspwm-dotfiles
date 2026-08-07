@@ -23,6 +23,7 @@ PACKAGESPACMAN=(
     "xorg-xinit"
     "xorg-server"
     "base-devel"
+    "ly"
 )
 echo -e "${YELLOW}Update pacman...${NC}"
 pacman -Syu --noconfirm --needed
