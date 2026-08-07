@@ -28,7 +28,6 @@ mkdir -p "$HOME/wallpapers/"
 cp wall.jpg "$HOME/wallpapers/"
 echo -e "${YELLOW}Copy dotfiles...${NC}"
 mkdir -p "$HOME/.config/"
-sudo mkdir $HOME/.config/
 sudo mkdir -p bspwm dunst kitty picom polybar rofi sxhkd "$HOME/.config/"
 sudo cp -r -v bspwm dunst kitty picom polybar rofi sxhkd "$HOME/.config/"
 echo -e "${GREEN}✓ All set!${NC}"
