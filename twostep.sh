@@ -25,8 +25,8 @@ for package in "${PACKAGESPARU[@]}"; do
 done
 echo -e "${YELLOW}Copy wallpaper..${NC}"
 mkdir -p "$HOME/wallpapers/"
-cp wall.jpg "$HOME/wallpapers/"
+sudo cp -v wall.jpg "$HOME/wallpapers/"
 echo -e "${YELLOW}Copy dotfiles...${NC}"
 mkdir -p "$HOME/.config/"
-cp -r -v bspwm dunst kitty picom polybar rofi sxhkd "$HOME/.config/"
+sudo cp -r -v bspwm dunst kitty picom polybar rofi sxhkd "$HOME/.config/"
 echo -e "${GREEN}✓ All set!${NC}"
