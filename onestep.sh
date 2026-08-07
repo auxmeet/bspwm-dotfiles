@@ -12,6 +12,7 @@ PACKAGESPACMAN=(
     "udisks2"
     "polybar"
     "wget"
+    "dunst"
     "kitty"
     "curl"
     "maim"
