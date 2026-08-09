@@ -10,8 +10,8 @@ sudo ./onestep.sh
 ```
 # Stuff
 
-# List packages
-# Installed with pacman:
+## List packages
+## Installed with pacman:
 - bspwm - X11 Window Manager.
 
 - sxhkd - Simple X Hot Key Daemon.
