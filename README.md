@@ -11,6 +11,31 @@ sudo ./onestep.sh
 
 # Keybinds
 ## Applications
+- `Super + Return`: Open Kitty terminal emulator.
+- `Super + D`: Open Rofi application launcher menu.
+- `Super + T`: Open Thunar (XFCE) file manager.
+- `Super + h`: Opens the Helium web browser.
+
+## Window Management
+- `Super + q`: Closes the currently focused window (node).
+- `Super + {t, f, s}`: Changes the window state (Tiled, Fullscreen, or Floating).
+
+## Focus & Navigation
+- `Super + {Left, Down, Up, Right}`: Changes window focus to the neighboring window in that direction.
+- `Super + shift + {Left, Down, Up, Right}`: Swaps the position of the focused window with the window in that direction.
+- `Super + {1-9, 0}`: Switches to the selected workspace (1 to 10).
+- `Super + shift + {1-9, 0}`: Sends the focused window to the selected
+
+## System & Media
+- `Super + r`: Reloads the bspwm configuration and restarts sxhkd to apply changes.
+- `Super + p`: Exits and quits the bspwm session.
+- `XF86AudioRaiseVolume` or `FN + F4`: Increases the volume by 5% using WirePlumber.
+- `XF86AudioLowerVolume` or `FN + F4`: Decreases the volume by 5%.
+- `XF86AudioMute` or `FN + F4`: Mutes or unmutes the default audio device.
+
+## Screenshots
+- `super + shift + d`: Takes a screenshot of the entire screen, copies it to the clipboard, and deletes the temporary file.
+- `Super + shift + s`: Allows you to select an area or window to screenshot a region, copies it to the clipboard, and deletes the temporary file.
 
 # List packages
 ## Installed with pacman:
