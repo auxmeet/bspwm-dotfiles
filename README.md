@@ -11,7 +11,7 @@ sudo ./onestep.sh
 ## Stuff
 
 # Installed with pacman:
-bspwm - X11 Window Manager.
+- bspwm - X11 Window Manager.
 
 - sxhkd - Simple X Hot Key Daemon.
 
