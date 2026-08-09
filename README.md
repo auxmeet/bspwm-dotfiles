@@ -80,3 +80,6 @@ sudo ./onestep.sh
 
 ## Installed with pacman:
 - picom-ftlabs-git - A Fork of Picom that support animations. 
+
+# Screenshot
+*soon*
