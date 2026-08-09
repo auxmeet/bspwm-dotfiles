@@ -10,7 +10,7 @@ sudo ./onestep.sh
 ```
 # Stuff
 
-## List packages
+List packages:
 ## Installed with pacman:
 - bspwm - X11 Window Manager.
 
