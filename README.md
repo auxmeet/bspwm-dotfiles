@@ -37,7 +37,7 @@ sudo ./onestep.sh
 - `Super + Shift + D`: Takes a screenshot of the entire screen, copies it to the clipboard, and deletes the temporary file.
 - `Super + Shift + S`: Allows you to select an area or window to screenshot a region, copies it to the clipboard, and deletes the temporary file.
 
-# List packages
+# Packages list 
 ## Installed with pacman:
 - bspwm - X11 Window Manager.
 
