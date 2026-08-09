@@ -9,7 +9,8 @@ sudo ./onestep.sh
 ./twostep.sh
 ```
 # Stuff
-
+## Keybinds
+# Applications
 ## List packages
 ## Installed with pacman:
 - bspwm - X11 Window Manager.
