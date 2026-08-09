@@ -10,8 +10,8 @@ sudo ./onestep.sh
 ```
 # Stuff
 
-## List packages
-Installed with pacman:
+### List packages
+## Installed with pacman:
 - bspwm - X11 Window Manager.
 
 - sxhkd - Simple X Hot Key Daemon.
@@ -48,8 +48,8 @@ Installed with pacman:
 
 - ly - A Lightweight Command-line Display Manager.
 
-Installed with git:
+## Installed with git:
 - paru - A Feature-Packed Helper and Wrapper for Pacman.
 
-Installed with pacman:
+## Installed with pacman:
 - picom-ftlabs-git - A Fork of Picom that support animations. 
