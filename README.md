@@ -44,6 +44,12 @@ Installed with pacman:
 
 - xorg-server - A Display Server to manage the Graphical User Interface.
 
-- base-devel - A Package Group used for Compiling and Building Software
+- base-devel - A Package Group used for Compiling and Building Software.
 
-- ly - A Lightweight Command-line Display Manager
+- ly - A Lightweight Command-line Display Manager.
+
+Installed with git:
+- paru - A Feature-Packed Helper and Wrapper for Pacman.
+
+Installed with pacman:
+- picom-ftlabs-git - A Fork of Picom that support animations. 
