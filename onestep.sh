@@ -25,11 +25,11 @@ PACKAGESPACMAN=(
     "ly"
 )
 echo -e "${YELLOW}Update pacman...${NC}"
-pacman -Syu --noconfirm --needed
+pacman -Syu --noconfirm --needed > /dev/null 2>&1
 echo -e "${YELLOW}Installing utilities...${NC}"
 for package in "${PACKAGESPACMAN[@]}"; do
     echo "Installing $package..."
-    sudo pacman -S "$package" --noconfirm --needed
+    sudo pacman -S "$package" --noconfirm --needed > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✓ $package installed${NC}"
     else
