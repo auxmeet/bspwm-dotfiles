@@ -81,10 +81,7 @@ sudo ./onestep.sh
 - paru - A Feature-Packed Helper and Wrapper for Pacman.
 
 ## Installed with paru:
-- picom-ftlabs-git - A Fork of Picom that support animations. 
-
-# Screenshot
-*soon*
+- picom-ftlabs-git - A Fork of Picom that support animations.
 
 # Wallpaper
 ![wall.jpg](wall.jpg)
