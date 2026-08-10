@@ -31,8 +31,8 @@ sudo ./onestep.sh
 ## System & Media
 - `Super + R`: Reloads the bspwm configuration and restarts sxhkd to apply changes.
 - `Super + P`: Exits and quits the bspwm session.
-- `XF86AudioRaiseVolume` or `FN + F4`: Increases the volume by 5% using WirePlumber.
-- `XF86AudioLowerVolume` or `FN + F4`: Decreases the volume by 5%.
+- `XF86AudioRaiseVolume` or `FN + F3`: Increases the volume by 5% using WirePlumber.
+- `XF86AudioLowerVolume` or `FN + F2`: Decreases the volume by 5%.
 - `XF86AudioMute` or `FN + F4`: Mutes or unmutes the default audio device.
 
 ## Screenshots
