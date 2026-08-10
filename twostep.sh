@@ -56,7 +56,7 @@ sudo cp -r -v bspwm dunst kitty picom polybar rofi sxhkd fastfetch "$HOME/.confi
 
 # Set permissions
 echo -e "Set +x permissions..."
-sudo chmod +x "$HOME/.config/bspwm/bspwmrc"
-sudo chmod +x "$HOME/.config/sxhkd/sxhkdrc"
+sudo chmod -c +x "$HOME/.config/bspwm/bspwmrc"
+sudo chmod -c +x "$HOME/.config/sxhkd/sxhkdrc"
 
 echo -e "✓ All set!"
