@@ -5,6 +5,10 @@ echo -e "Paru helper needed"
 echo -e "Install from git or pacman"
 read -p "Continue? (pacman/git): " ans
 
+PACKAGESPACMAN=(
+    "paru"
+)
+
 # Git paru
 if [[ "$ans" == "git" ]]; then
     echo -e "Script will install paru from git"
@@ -19,8 +23,15 @@ fi
 if [[ "$ans" == "pacman" ]]; then
     echo -e "Script will install paru from pacman"
     echo -e "Installing paru..." 
-    sudo pacman -S paru --noconfirm --needed > /dev/null 2>&1
-fi
+for package in "${PACKAGESPACMAN[@]}"; do
+    echo "Установка $package..."
+    paru -S "$package" --noconfirm --needed > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo -e "✓ $package installed"
+    else
+        echo -e "✗ Error while installing $package"
+    fi
+done
 
 # Paru Packages
 echo -e "Install picom-ftlabs-git and helium-browser-bin"
@@ -56,7 +67,7 @@ sudo cp -r -v bspwm dunst kitty picom polybar rofi sxhkd fastfetch "$HOME/.confi
 
 # Set permissions
 echo -e "Set +x permissions..."
-sudo chmod -v +x "$HOME/.config/bspwm/bspwmrc"
-sudo chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
+sudo chmod +x "$HOME/.config/bspwm/bspwmrc"
+sudo chmod +x "$HOME/.config/sxhkd/sxhkdrc"
 
 echo -e "✓ All set!"
