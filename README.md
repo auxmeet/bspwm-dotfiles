@@ -8,9 +8,15 @@ chmod +x twostep.sh
 sudo ./onestep.sh
 ./twostep.sh
 ```
+
 ## !! Use only [CachyOS](https://cachyos.org/download/) or other Arch-based !!
 
-## How to use Fastfetch 
+# How to use Fastfetch
+`fastfecth --config ~/.config/fastfetch/fastfetch.jsonc`
+
+# Wallpaper
+![wall.jpg](wall.jpg)
+
 # Keybinds
 ## Applications
 - `Super + Return` or `Super + (Enter)`: Open Kitty terminal emulator.
@@ -82,6 +88,3 @@ sudo ./onestep.sh
 
 ## Installed with paru:
 - picom-ftlabs-git - A Fork of Picom that support animations.
-
-# Wallpaper
-![wall.jpg](wall.jpg)
