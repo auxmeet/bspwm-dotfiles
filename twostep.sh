@@ -3,7 +3,8 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
-echo -e "Istall from git or pacman"
+echo -e "Paru helper needed"
+echo -e "Install from git or pacman"
 read -p "Continue? (pacman/git): " ans
 if [[ "$ans" == "git" ]]; then
     echo -e "${YELLOW}Script will install paru from git${NC}"
