@@ -12,6 +12,7 @@ if [[ "$ans" == "git" ]]; then
     git clone https://aur.archlinux.org/paru.git
     cd paru
     makepkg -si
+    cd ..
 fi
 if [[ "$ans" == "pacman" ]]; then
     echo -e "${YELLOW}Script will install paru from pacman${NC}"
