@@ -23,6 +23,7 @@ fi
 if [[ "$ans" == "pacman" ]]; then
     echo -e "Script will install paru from pacman"
     echo -e "Installing paru..." 
+continue
     for package in "${PACKAGESPACMAN[@]}"; do
         echo "Установка $package..."
         paru -S "$package" --noconfirm --needed > /dev/null 2>&1
