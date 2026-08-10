@@ -1,9 +1,6 @@
 #!/bin/bash
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m'
-echo -e "${YELLOW}Installing utilities and dotfiles...${NC}"
+
+# Pacman Packages
 PACKAGESPACMAN=(
     "bspwm"
     "sxhkd"
@@ -24,15 +21,20 @@ PACKAGESPACMAN=(
     "base-devel"
     "ly"
 )
-echo -e "${YELLOW}Update pacman...${NC}"
+
+# Pacman Update
+echo -e "Update pacman..."
 pacman -Syu --noconfirm --needed > /dev/null 2>&1
-echo -e "${YELLOW}Installing utilities...${NC}"
+
+# Pacman Install
+echo -e "Installing utilities..."
 for package in "${PACKAGESPACMAN[@]}"; do
     echo "Installing $package..."
     sudo pacman -S "$package" --noconfirm --needed > /dev/null 2>&1
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✓ $package installed${NC}"
+        echo -e "✓ $package installed"
     else
-        echo -e "${RED}✗ Error while installing $package${NC}"
+        echo -e "✗ Error while installing $package"
     fi
 done
+./twostep.sh
