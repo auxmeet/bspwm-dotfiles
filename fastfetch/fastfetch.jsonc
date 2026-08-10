@@ -27,7 +27,6 @@
     "terminalsize",
     "terminaltheme",
     "cpu",
-    "cpucache",
     "cpuusage",
     "gpu",
     "memory",
