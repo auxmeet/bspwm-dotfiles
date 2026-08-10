@@ -10,6 +10,7 @@ makepkg -si
 echo -e "${YELLOW}Install picom-ftlabs-git and set wallpaper...${NC}"
 PACKAGESPARU=(
     "picom-ftlabs-git"
+    "helium-browser-bin"
 )
 echo -e "${YELLOW}Update paru...${NC}"
 paru -Syu --noconfirm --needed
