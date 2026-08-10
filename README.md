@@ -8,7 +8,9 @@ chmod +x twostep.sh
 sudo ./onestep.sh
 ./twostep.sh
 ```
+
 ## !! Use only [CachyOS](https://cachyos.org/download/) or other Arch-based !!
+
 # Keybinds
 ## Applications
 - `Super + Return` or `Super + (Enter)`: Open Kitty terminal emulator.
@@ -85,4 +87,4 @@ sudo ./onestep.sh
 *soon*
 
 # Wallpaper
-![Space Wallpaper](wall.jpg)
+![wall.jpg](wall.jpg)
