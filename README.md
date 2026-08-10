@@ -12,10 +12,7 @@ sudo ./onestep.sh
 ## !! Use only [CachyOS](https://cachyos.org/download/) or other Arch-based !!
 
 # How to use Fastfetch
-`fastfecth --config ~/.config/fastfetch/fastfetch.jsonc`
-
-# Wallpaper
-![wall.jpg](wall.jpg)
+`fastfetch --config ~/.config/fastfetch/fastfetch.jsonc`
 
 # Keybinds
 ## Applications
@@ -88,3 +85,6 @@ sudo ./onestep.sh
 
 ## Installed with paru:
 - picom-ftlabs-git - A Fork of Picom that support animations.
+
+# Wallpaper
+![wall.jpg](wall.jpg)
