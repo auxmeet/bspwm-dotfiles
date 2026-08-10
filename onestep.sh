@@ -37,4 +37,3 @@ for package in "${PACKAGESPACMAN[@]}"; do
         echo -e "✗ Error while installing $package"
     fi
 done
-./twostep.sh
