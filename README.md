@@ -78,7 +78,7 @@ sudo ./onestep.sh
 ## Installed with git:
 - paru - A Feature-Packed Helper and Wrapper for Pacman.
 
-## Installed with pacman:
+## Installed with paru:
 - picom-ftlabs-git - A Fork of Picom that support animations. 
 
 # Screenshot
