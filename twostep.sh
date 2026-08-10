@@ -70,4 +70,5 @@ sudo chmod -v +x "$HOME/.config/bspwm/bspwmrc"
 sudo chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
 
 echo -e "✓ All set!"
+
 fi
