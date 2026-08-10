@@ -85,4 +85,4 @@ sudo ./onestep.sh
 *soon*
 
 # Wallpaper
-![wall.jpg](https://github.com/auxmeet/bspwm-dotfiles/blob/main/wall.jpg?raw=true)
+![Space Wallpaper](wall.jpg)
