@@ -45,7 +45,7 @@ paru -Syu --noconfirm --needed > /dev/null 2>&1
 
 # Paru Install
 for package in "${PACKAGESPARU[@]}"; do
-    echo "Установка $package..."
+    echo "Installing $package..."
     paru -S "$package" --noconfirm --needed > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "✓ $package installed"
