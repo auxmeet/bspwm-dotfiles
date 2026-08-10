@@ -13,11 +13,11 @@ PACKAGESPARU=(
     "helium-browser-bin"
 )
 echo -e "${YELLOW}Update paru...${NC}"
-paru -Syu --noconfirm --needed
+paru -Syu --noconfirm --needed > /dev/null 2>&1
 echo -e "${YELLOW}Install picom-ftlabs-git and set wallpaper...${NC}"
 for package in "${PACKAGESPARU[@]}"; do
     echo "Установка $package..."
-    paru -S "$package" --noconfirm --needed
+    paru -S "$package" --noconfirm --needed > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✓ $package installed${NC}"
     else
