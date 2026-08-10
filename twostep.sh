@@ -23,8 +23,7 @@ fi
 if [[ "$ans" == "pacman" ]]; then
     echo -e "Script will install paru from pacman"
     echo -e "Installing paru..." 
-continue
-    for package in "${PACKAGESPACMAN[@]}"; do
+for package in "${PACKAGESPACMAN[@]}"; do
         echo "Установка $package..."
         paru -S "$package" --noconfirm --needed > /dev/null 2>&1
     if [ $? -eq 0 ]; then
@@ -72,3 +71,4 @@ sudo chmod +x "$HOME/.config/bspwm/bspwmrc"
 sudo chmod +x "$HOME/.config/sxhkd/sxhkdrc"
 
 echo -e "✓ All set!"
+fi
