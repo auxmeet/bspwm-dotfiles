@@ -8,9 +8,8 @@ chmod +x twostep.sh
 sudo ./onestep.sh
 ./twostep.sh
 ```
-https://github.com/auxmeet/bspwm-dotfiles/blob/main/wall.jpg?raw=true
-![Space Wallpaper](https://github.com/auxmeet/bspwm-dotfiles/blob/main/wall.jpg?raw=true)
-
+# Wallpaper
+![wall.jpg](https://github.com/auxmeet/bspwm-dotfiles/blob/main/wall.jpg?raw=true)
 ## !! Use only [CachyOS](https://cachyos.org/download/) or other Arch-based !!
 # Keybinds
 ## Applications
