@@ -5,7 +5,7 @@ echo -e "Paru helper needed"
 echo -e "Install from git or pacman"
 read -p "Continue? (pacman/git): " ans
 
-# Git
+# Git paru
 if [[ "$ans" == "git" ]]; then
     echo -e "Script will install paru from git"
     echo -e "Installing paru..."
@@ -15,16 +15,15 @@ if [[ "$ans" == "git" ]]; then
     cd ..
 fi
 
-# Pacman
+# Pacman paru
 if [[ "$ans" == "pacman" ]]; then
     echo -e "Script will install paru from pacman"
     echo -e "Installing paru..." 
     sudo pacman -S paru --noconfirm --needed > /dev/null 2>&1
 fi
 
-echo -e "Install picom-ftlabs-git and helium-browser-bin"
-
 # Paru Packages
+echo -e "Install picom-ftlabs-git and helium-browser-bin"
 PACKAGESPARU=(
     "picom-ftlabs-git"
     "helium-browser-bin"
