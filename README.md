@@ -79,6 +79,12 @@ sudo ./onestep.sh
 
 - base-devel - Package Group used for Compiling and Building Software.
 
+- thunar - Fast lightweight file manager from Xfce4
+
+- thunar-archive-plugin - Archive extension for the Thunar File Manager lets you right-click files and folders to make or open zip and tar files
+
+- thunar-volman - Volume manager extension for the Thunar File Manager lets handles removable drives and media automatically
+  
 - gamemode - Background program and library tool if you play games on your computer this program turn performance boosts.
 
 - lib32-gamemode - Is 32-bit version of gamemode.
