@@ -73,7 +73,6 @@ sudo cp -r -v cachyos-fish-config /usr/share/
 echo -e "Set +x permissions..."
 sudo chmod -v +x "$HOME/.config/bspwm/bspwmrc"
 sudo chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
-
 echo -e "✓ All set!"
 
 fi
