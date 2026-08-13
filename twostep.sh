@@ -3,14 +3,15 @@
 # Info
 echo -e "Paru helper needed"
 echo -e "Install from git or pacman"
-read -p "Continue? (pacman/git): " ans
+echo -e "p = pacman g = git"
+read -p "Continue? (p/g): " ans
 
 PACKAGESPACMAN=(
     "paru"
 )
 
 # Git paru
-if [[ "$ans" == "git" ]]; then
+if [[ "$ans" == "g" ]]; then
     echo -e "Script will install paru from git"
     echo -e "Installing paru..."
     git clone https://aur.archlinux.org/paru.git
@@ -20,7 +21,7 @@ if [[ "$ans" == "git" ]]; then
 fi
 
 # Pacman paru
-if [[ "$ans" == "pacman" ]]; then
+if [[ "$ans" == "p" ]]; then
     echo -e "Script will install paru from pacman"
 for package in "${PACKAGESPACMAN[@]}"; do
         echo "Installing $package..."
