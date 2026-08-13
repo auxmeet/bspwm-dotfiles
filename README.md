@@ -10,6 +10,7 @@ sudo ./onestep.sh
 ```
 
 ## !! Use only [CachyOS](https://cachyos.org/download/) or other Arch-based !!
+## Also thanks fot support @iromenero
 
 # How to use Fastfetch
 `fastfetch --config ~/.config/fastfetch/fastfetch.jsonc`
