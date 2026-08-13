@@ -47,38 +47,42 @@ sudo ./onestep.sh
 - bspwm - X11 Window Manager.
 
 - sxhkd - Simple X Hot Key Daemon.
+ 
+- rofi - Application launcher.
 
-- rofi - Application Launcher.
+- udiskie - Auto mount disks or USB Sticks.
 
-- udiskie - Auto Mount Disks or USB Sticks.
+- udisks2 - Background service to manage storage devices.
 
-- udisks2 - Background Service to Manage Storage Devices.
+- polybar - Customizable bar.
 
-- polybar - Customizable Bar.
-
-- dunst - Notification Daemon.
+- dunst - Notification daemon.
 
 - kitty - Fast GPU Terminal.
 
-- maim - A Command-Line Utility Used to Capture Screenshots.
+- maim - Command-Line utility used to capture screenshots.
 
-- feh - A Fast Lightweight Image Viewer and Wallpaper.
+- feh - Fast lightweight image viewer and wallpaper.
 
-- xclip - A Command-Line Tool that makes copy your Screenshot.
+- xclip - Command-line tool that makes copy your screenshot.
 
 - fastfetch - Command-Line Utility that Displays Hardware Information.
 
-- xorg-xsetroot - A Command-Line Tool used to Customize Cursor on an X11 Display Server.
+- xorg-xsetroot - Command-Line tool used to customize cursor on an X11 Display Server.
 
-- xorg-xrandr - A Command-Line Utility for X Window System lets you Change Screen Resolutions and Refresh Rates.
+- xorg-xrandr - Command-Line utility for X Window System lets you change screen resolutions and refresh rates.
 
-- xorg-xinit - A Program Used to manually Start Xorg Display Server.
+- xorg-xinit - Program used to manually start Xorg Display Server.
 
-- xorg-server - A Display Server to manage the Graphical User Interface.
+- xorg-server - Display server to manage the Graphical User Interface.
 
-- base-devel - A Package Group used for Compiling and Building Software.
+- base-devel - Package Group used for Compiling and Building Software.
 
-- ly - A Lightweight Command-line Display Manager.
+- gamemode - Background program and library tool if you play games on your computer this program turn performance boosts.
+
+- lib32-gamemode - Is 32-bit version of gamemode.
+  
+- ly - Lightweight command-line Display Manager.
 
 ## Installed with git:
 - paru - A Feature-Packed Helper and Wrapper for Pacman.
