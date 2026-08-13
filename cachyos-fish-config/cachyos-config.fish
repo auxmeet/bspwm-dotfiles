@@ -4,7 +4,7 @@ source /usr/share/cachyos-fish-config/conf.d/done.fish
 ## Set values
 ## Run fastfetch as welcome message
 function fish_greeting
-    fastfetch --config ~/.config/fastfetch/fastfetch.jsonc
+    fastfetch --pipe --config ~/.config/fastfetch/fastfetch.jsonc
 end
 
 # Format man pages
