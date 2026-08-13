@@ -77,7 +77,7 @@ sudo ./onestep.sh
 
 - xorg-server - Display server to manage the Graphical User Interface.
 
-- base-devel - Package Group used for Compiling and Building Software.
+- base-devel - Package group used for compiling and building software.
 
 - thunar - Fast lightweight file manager from Xfce4
 
