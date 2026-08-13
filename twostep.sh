@@ -64,9 +64,10 @@ echo -e "Copy dotfiles..."
 sudo mkdir -p "$HOME/.config/"
 sudo cp -r -v bspwm dunst kitty picom polybar rofi sxhkd fastfetch "$HOME/.config/"
 
+# Copy fish config
 echo -e "Copy fish config..."
+sudo cp -r -v cachyos-fish-config /usr/share/
 
-sudo cp -r -v /usr/share/cachyos-fish-config ""
 # Set permissions
 echo -e "Set +x permissions..."
 sudo chmod -v +x "$HOME/.config/bspwm/bspwmrc"
