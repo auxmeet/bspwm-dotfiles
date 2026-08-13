@@ -19,6 +19,8 @@ PACKAGESPACMAN=(
     "xorg-xinit"
     "xorg-server"
     "base-devel"
+    "gamemode"
+    "lib32-gamemode"
     "ly"
 )
 
