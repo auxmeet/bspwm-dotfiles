@@ -1,64 +1,68 @@
 #!/bin/bash
-# utils for build
+# Stop execution if any command fails
+set -e 
+
+# 1. Corrected package list for Void Linux (+ added zig and pam-development)
 BUILDUTILS=(
     "base-devel"
     "meson"
     "ninja"
     "cmake" 
-    "libev-devel"
-    "xcb-util-renderutil-devel"
+    "zig"
+    "libev-development"
+    "xcb-util-renderutil-development"
     "xcb-util-image-devel"
-    "pixman-devel"
-    "pkgconfig"
+    "pixman-development"
+    "pkg-config"
     "uthash"
-    "pcre2-devel"
-    "dbus-devel"
-    "glu-devel"
-    "libconfig-devel"
-    "libepoxy-devel"
+    "pcre2-development"
+    "dbus-development"
+    "glu-development"
+    "libconfig-development"
+    "libepoxy-development"
+    "pam-development" # Required for Ly display manager authentication
 )
 
-echo -e "Installing utils..."
-for package in "${BUILDUTILS[@]}"; do
-    echo "Installing $package..."
-    sudo xbps-install -S "$package" -yu > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        echo -e "✓ $package installed"
-    else
-        echo -e "✗ Error while installing $package"
-    fi
-done
+echo "Updating repositories and installing build dependencies..."
+sudo xbps-install -Syu
+sudo xbps-install -y "${BUILDUTILS[@]}"
 
-# Build Picom
-git clone https://github.com/r0-zero/picom
-cd picom-ftlabs
+# 2. Build Picom (Fixed directory name after git clone)
+echo "Cloning and building Picom..."
+git clone https://github.com
+cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
 sudo ninja -C build install
 cd ..
 
-# Build
-git clone https://github.com/cylgom/ly.git
+# 3. Build Ly (Rewritten to use the modern Zig build system and correct Runit integration)
+echo "Cloning and building Ly Display Manager..."
+git clone https://github.com
 cd ly
-make github
-make
-sudo make install
-sudo ln -s /etc/sv/ly-runit-service /var/service/
-sudo rm /var/service/agetty-tty2
+zig build installexe -Dinit_system=runit
+
+# Safely disable agetty on tty2 to avoid conflicts with Ly
+sudo unlink /var/service/agetty-tty2 || true
+sudo touch /etc/sv/agetty-tty2/down || true
+
+# Enable Ly service in runit
+sudo ln -s /etc/sv/ly /var/service/
 cd ..
 
-# Copy wallpaper
-echo -e "Copy wallpaper.."
-sudo mkdir -p "$HOME/wallpapers/"
-sudo cp -v wall.jpg "$HOME/wallpapers/"
+# 4. Copy wallpaper (Executed WITHOUT sudo so you own the files)
+echo "Copying wallpaper..."
+mkdir -p "$HOME/wallpapers/"
+cp -v wall.jpg "$HOME/wallpapers/"
 
-# Copy dotfiles
-echo -e "Copy dotfiles..."
-sudo mkdir -p "$HOME/.config/"
-sudo cp -r -v bspwm dunst kitty picom polybar rofi sxhkd fastfetch fish "$HOME/.config/"
+# 5. Copy dotfiles (Executed WITHOUT sudo to prevent permission lockouts)
+echo "Copying configuration files..."
+mkdir -p "$HOME/.config/"
+cp -r -v bspwm dunst kitty picom polybar rofi sxhkd fastfetch fish "$HOME/.config/"
 
-# Set permissions
-echo -e "Set +x permissions..."
-sudo chmod -v +x "$HOME/.config/bspwm/bspwmrc"
-sudo chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
-echo -e "✓ All set!"
+# 6. Set executable permissions (WITHOUT sudo)
+echo "Setting executable permissions on startup scripts..."
+chmod -v +x "$HOME/.config/bspwm/bspwmrc"
+chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
+
+echo -e "\n✓ All utilities, window manager components, and dotfiles successfully installed!"
