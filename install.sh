@@ -2,10 +2,6 @@
 # Stop execution if any command fails
 set -e
 
-# ==========================================
-# 1. DEFINING ARRAYS (REPOS & PACKAGES)
-# ==========================================
-
 REPOS=(
     "void-repo-nonfree"
     "void-repo-multilib"
