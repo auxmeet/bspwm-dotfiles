@@ -12,7 +12,7 @@ REPOS=(
     "void-repo-multilib-nonfree"
 )
 
-# Core system utilities (Strictly configured with fish-shell)
+# Core system utilities (Strictly configured with fish-shell and xinit)
 SYSTEM_PACKAGES=(
     "fish-shell"
     "udiskie"
@@ -29,6 +29,7 @@ SYSTEM_PACKAGES=(
     "fastfetch"
     "xorg-minimal"
     "xorg-apps"
+    "xinit"          # Необходим для ручного запуска X-сервера через startx
     "xf86-video-modesetting"
     "Thunar"
     "thunar-archive-plugin"
@@ -54,7 +55,6 @@ BUILD_DEPS=(
     "glu-devel"
     "libconfig-devel"
     "libepoxy-devel"
-    "pam-devel"
 )
 
 # ==========================================
@@ -67,7 +67,7 @@ sudo xbps-install -Sy "${REPOS[@]}"
 echo "==> Step 2: Performing full system upgrade..."
 sudo xbps-install -Syu
 
-echo "==> Step 3: Installing main system utilities..."
+echo "==> Step 3: Installing main system utilities and xinit..."
 sudo xbps-install -y "${SYSTEM_PACKAGES[@]}"
 
 echo "==> Step 4: Installing software compilation dependencies..."
@@ -79,43 +79,22 @@ sudo xbps-install -y "${BUILD_DEPS[@]}"
 
 echo "==> Step 5: Cloning and building Picom (FTLabs animations fork)..."
 rm -rf picom
-git clone --depth=1 https://github.com/r0-zero/picom
+git clone --depth=1 https://github.com
 cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
 sudo ninja -C build install
 cd ..
 
-echo "==> Step 6: Cloning and building Ly Display Manager (Pure C Version)..."
-rm -rf ly ly-void
-# Клонируем официальный релиз v0.6.0, который написан полностью на Си и не требует Zig
-git clone --branch v0.6.0 --depth=1 https://github.com/drozdowsky/ly-void
-cd ly
-
-# Компиляция и ручная генерация конфигурационных флагов
-make
-sudo make install
-sudo make flags
-
-# Отключаем стандартный agetty на tty2, чтобы избежать конфликтов
-sudo rm -f /var/service/agetty-tty2 || true
-if [ -d "/etc/sv/agetty-tty2" ]; then
-    sudo touch /etc/sv/agetty-tty2/down || true
-fi
-
-# Включаем и активируем runit-службу дисплейного менеджера Ly
-sudo ln -sf /etc/sv/ly /var/service/
-cd ..
-
 # ==========================================
 # 4. USER DOTFILES & WALLPAPERS
 # ==========================================
 
-echo "==> Step 7: Structuring user environment paths..."
+echo "==> Step 6: Structuring user environment paths..."
 mkdir -p "$HOME/wallpapers/"
 mkdir -p "$HOME/.config/"
 
-echo "==> Step 8: Copying wallpapers and configuration files..."
+echo "==> Step 7: Copying wallpapers and configuration files..."
 if [ -f "wall.jpg" ]; then
     cp -v wall.jpg "$HOME/wallpapers/"
 else
@@ -131,7 +110,7 @@ for folder in "${DOTFILES[@]}"; do
     fi
 done
 
-echo "==> Step 9: Granting executable permissions to core configs..."
+echo "==> Step 8: Granting executable permissions to core configs..."
 if [ -f "$HOME/.config/bspwm/bspwmrc" ]; then
     chmod -v +x "$HOME/.config/bspwm/bspwmrc"
 fi
@@ -143,10 +122,25 @@ fi
 # 5. POST-INSTALL CONFIGURATION
 # ==========================================
 
+echo "==> Step 9: Creating .xinitrc configuration..."
+# Скрипт создаёт файл инициализации X-сессии, который запускает sxhkd и bspwm
+cat << 'EOF' > "$HOME/.xinitrc"
+#!/bin/sh
+
+# Запуск горячих клавиш в фоне
+sxhkd &
+
+# Запуск оконного менеджера bspwm
+exec bspwm
+EOF
+
+chmod +x "$HOME/.xinitrc"
+
 echo "==> Step 10: Setting Fish shell as default..."
 if ! grep -q "/usr/bin/fish" /etc/shells; then
     echo "/usr/bin/fish" | sudo tee -a /etc/shells
 fi
 chsh -s /usr/bin/fish "$USER"
 
-echo -e "\n✓ SUCCESS: System build completed. Please reboot your machine to apply all changes!"
+echo -e "\n✓ SUCCESS: System build completed! Please reboot your machine."
+echo "After rebooting, log in to your TTY terminal and type 'startx' to enter BSPWM."
