@@ -2,13 +2,17 @@
 # Stop execution if any command fails
 set -e
 
+# ==========================================
+# 1. DEFINING ARRAYS (REPOS & PACKAGES)
+# ==========================================
+
 REPOS=(
     "void-repo-nonfree"
     "void-repo-multilib"
     "void-repo-multilib-nonfree"
 )
 
-# Core system utilities and Xorg server components
+# Core system utilities (Corrected strictly to fish-shell)
 SYSTEM_PACKAGES=(
     "fish-shell"
     "udiskie"
@@ -33,7 +37,7 @@ SYSTEM_PACKAGES=(
     "gamemode"
 )
 
-# Compiling tools and source code dependencies
+# Compiling tools and source code dependencies (Fixed development suffixes to -devel)
 BUILD_DEPS=(
     "base-devel"
     "meson"
@@ -41,17 +45,17 @@ BUILD_DEPS=(
     "cmake" 
     "zig"
     "libev-devel"
-    "xcb-util-renderutil-development"
-    "xcb-util-image-development"
-    "pixman-development"
+    "xcb-util-renderutil-devel"
+    "xcb-util-image-devel"
+    "pixman-devel"
     "pkg-config"
     "uthash"
-    "pcre2-development"
-    "dbus-development"
-    "glu-development"
-    "libconfig-development"
-    "libepoxy-development"
-    "pam-development"
+    "pcre2-devel"
+    "dbus-devel"
+    "glu-devel"
+    "libconfig-devel"
+    "libepoxy-devel"
+    "pam-devel"
 )
 
 # ==========================================
@@ -75,7 +79,8 @@ sudo xbps-install -y "${BUILD_DEPS[@]}"
 # ==========================================
 
 echo "==> Step 5: Cloning and building Picom (FTLabs animations fork)..."
-git clone https://github.com
+rm -rf picom
+git clone --depth=1 https://github.com/r0-zero/picom
 cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
@@ -83,16 +88,19 @@ sudo ninja -C build install
 cd ..
 
 echo "==> Step 6: Cloning and building Ly Display Manager..."
-git clone https://github.com
+rm -rf ly
+git clone --depth=1 https://github.com/drozdowsky/ly-void
 cd ly
 zig build installexe -Dinit_system=runit
 
 # Safely disabling default tty2 agetty to clear path for Ly
 sudo unlink /var/service/agetty-tty2 || true
-sudo touch /etc/sv/agetty-tty2/down || true
+if [ -d "/etc/sv/agetty-tty2" ]; then
+    sudo touch /etc/sv/agetty-tty2/down || true
+fi
 
 # Linking Ly binary to Runit services
-sudo ln -s /etc/sv/ly /var/service/
+sudo ln -sf /etc/sv/ly /var/service/
 cd ..
 
 # ==========================================
@@ -104,11 +112,27 @@ mkdir -p "$HOME/wallpapers/"
 mkdir -p "$HOME/.config/"
 
 echo "==> Step 8: Copying wallpapers and configuration files..."
-cp -v wall.jpg "$HOME/wallpapers/"
-cp -r -v bspwm dunst kitty picom polybar rofi sxhkd fastfetch fish "$HOME/.config/"
+if [ -f "wall.jpg" ]; then
+    cp -v wall.jpg "$HOME/wallpapers/"
+else
+    echo "Warning: wall.jpg not found in current directory, skipping."
+fi
+
+DOTFILES=(bspwm dunst kitty picom polybar rofi sxhkd fastfetch fish)
+for folder in "${DOTFILES[@]}"; do
+    if [ -d "$folder" ]; then
+        cp -r -v "$folder" "$HOME/.config/"
+    else
+        echo "Warning: Configuration folder '$folder' not found in current directory, skipping."
+    fi
+done
 
 echo "==> Step 9: Granting executable permissions to core configs..."
-chmod -v +x "$HOME/.config/bspwm/bspwmrc"
-chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
+if [ -f "$HOME/.config/bspwm/bspwmrc" ]; then
+    chmod -v +x "$HOME/.config/bspwm/bspwmrc"
+fi
+if [ -f "$HOME/.config/sxhkd/sxhkdrc" ]; then
+    chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
+fi
 
-echo -e "\n✓ SUCCESS: System build completed. Please reboot to initialization environment."
+echo -e "\n✓ SUCCESS: System build completed. Please reboot your machine."
