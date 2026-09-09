@@ -21,7 +21,7 @@ BUILDUTILS=(
 echo -e "Installing utils..."
 for package in "${BUILDUTILS[@]}"; do
     echo "Installing $package..."
-    sudo xbps-install -S "$package" -yu 
+    sudo xbps-install -S "$package" -yu > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "✓ $package installed"
     else
