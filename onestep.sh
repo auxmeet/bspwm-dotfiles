@@ -1,31 +1,45 @@
 #!/bin/bash
+# repositories
+REPOS=(
+    "void-repo-nonfree"
+    "void-repo-multilib"
+    "void-repo-multilib-nonfree"
+)
+
+echo -e "Installing repositories..."
+for package in "${REPOS[@]}"; do
+    echo "Installing repo $package..."
+    sudo xbps-install -S "$package" -yu 
+    if [ $? -eq 0 ]; then
+        echo -e "✓ $package installed"
+    else
+        echo -e "✗ Error while installing $package"
+    fi
+done
 
 # xbps packages
 PACKAGES=(
+    "base-devel"
+    "udiskie"
+    "udisks2"
     "bspwm"
     "sxhkd"
     "rofi"
-    "udiskie"
-    "udisks2"
     "polybar"
     "dunst"
     "kitty"
-    "maim"
     "feh"
     "xclip"
+    "maim"
     "fastfetch"
-    "xorg-xsetroot"
-    "xorg-xrandr"
-    "xorg-xinit"
     "xorg-server"
-    "base-devel"
-    "thunar"
+    "xorg-server-common"
+    "Thunar"
     "thunar-archive-plugin"
     "thunar-volman"
     "mousepad"
     "gamemode"
     "lib32-gamemode"
-    "ly"
 )
 
 # xbps update
