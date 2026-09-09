@@ -79,7 +79,7 @@ sudo xbps-install -y "${BUILD_DEPS[@]}"
 
 echo "==> Step 5: Cloning and building Picom (FTLabs animations fork)..."
 rm -rf picom
-git clone --depth=1 https://github.com
+git clone --depth=1 https://github.com/r0-zero/picom
 cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
