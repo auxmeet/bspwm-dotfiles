@@ -87,17 +87,23 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
-echo "==> Step 6: Cloning and building Ly Display Manager (Stable Release v1.0.1)..."
+echo "==> Step 6: Cloning and building Ly Display Manager (Compatible Stable Branch)..."
 rm -rf ly ly-void
-git clone --branch v1.0.1 --depth=1 https://github.com/fairyglade/ly
+# Скачиваем стабильный срез, полностью совместимый с компилятором Zig в Void Linux
+git clone --branch v0.6.0 --depth=1 https://github.com/fairyglade/ly|| git clone --depth=1 https://github.com/fairyglade/ly
 cd ly
 
-# ИСПРАВЛЕНИЕ: Автоматически патчим build.zig под синтаксис Zig 0.13.0
-echo "Applying Build.LazyPath API patch for Zig 0.13.0..."
-sed -i 's/\.root_source_file = \.{ \.path = \("src\/main\.zig"\) }/\.root_source_file = b.path(\1)/g' build.zig
-
-# Компиляция дисплейного менеджера
-zig build installexe -Dinit_system=runit
+# Проверяем старый метод сборки (make), так как старые версии Ly не использовали Zig, 
+# что гарантирует отсутствие ошибок компилятора LazyPath!
+if [ -f "Makefile" ]; then
+    echo "Building Ly via GNU Make..."
+    make
+    sudo make install
+    sudo make flags
+else
+    echo "Building Ly via Zig Build System..."
+    zig build installexe -Dinit_system=runit
+fi
 
 # Safely disabling default tty2 agetty to clear path for Ly
 sudo unlink /var/service/agetty-tty2 || true
