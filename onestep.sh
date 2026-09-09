@@ -30,7 +30,7 @@ PACKAGES=(
 
 # xbps update
 echo -e "System update..."
-xbps-install -Syu
+sudo xbps-install -Syu
 
 # xbps install
 echo -e "Installing utilities..."
