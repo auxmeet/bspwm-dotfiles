@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # repositories
 REPOS=(
     "void-repo-nonfree"
