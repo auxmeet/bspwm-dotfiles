@@ -12,7 +12,7 @@ REPOS=(
     "void-repo-multilib-nonfree"
 )
 
-# Core system utilities (Corrected strictly to fish-shell)
+# Core system utilities (Strictly configured with fish-shell)
 SYSTEM_PACKAGES=(
     "fish-shell"
     "udiskie"
@@ -37,7 +37,7 @@ SYSTEM_PACKAGES=(
     "gamemode"
 )
 
-# Compiling tools and source code dependencies (Fixed development suffixes to -devel)
+# Compiling tools and source code dependencies (Verified -devel suffixes)
 BUILD_DEPS=(
     "base-devel"
     "meson"
@@ -80,7 +80,7 @@ sudo xbps-install -y "${BUILD_DEPS[@]}"
 
 echo "==> Step 5: Cloning and building Picom (FTLabs animations fork)..."
 rm -rf picom
-git clone --depth=1 https://github.com/r0-zero/picom.git
+git clone --depth=1 https://github.com/r0-zero/picom
 cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
@@ -88,9 +88,9 @@ sudo ninja -C build install
 cd ..
 
 echo "==> Step 6: Cloning and building Ly Display Manager..."
-rm -rf ly
-git clone --depth=1 https://github.com/drozdowsky/ly-void.git
-cd ly-void
+rm -rf ly ly-void
+git clone --depth=1 https://github.com/fairyglade/ly
+cd ly
 zig build installexe -Dinit_system=runit
 
 # Safely disabling default tty2 agetty to clear path for Ly
