@@ -20,6 +20,7 @@ done
 
 # xbps packages
 PACKAGES=(
+    "fish-shell"
     "base-devel"
     "udiskie"
     "udisks2"
@@ -33,8 +34,9 @@ PACKAGES=(
     "xclip"
     "maim"
     "fastfetch"
-    "xorg-server"
-    "xorg-server-common"
+    "xorg-minimal"
+    "xorg-apps"
+    "xf86-video-modesetting"
     "Thunar"
     "thunar-archive-plugin"
     "thunar-volman"
