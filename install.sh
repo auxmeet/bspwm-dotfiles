@@ -80,7 +80,7 @@ sudo xbps-install -y "${BUILD_DEPS[@]}"
 
 echo "==> Step 5: Cloning and building Picom (FTLabs animations fork)..."
 rm -rf picom
-git clone --depth=1 https://github.com/r0-zero/picom
+git clone --depth=1 https://github.com/r0-zero/picom.git
 cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
@@ -89,8 +89,8 @@ cd ..
 
 echo "==> Step 6: Cloning and building Ly Display Manager..."
 rm -rf ly
-git clone --depth=1 https://github.com/drozdowsky/ly-void
-cd ly
+git clone --depth=1 https://github.com/drozdowsky/ly-void.git
+cd ly-void
 zig build installexe -Dinit_system=runit
 
 # Safely disabling default tty2 agetty to clear path for Ly
