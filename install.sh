@@ -80,23 +80,20 @@ sudo xbps-install -y "${BUILD_DEPS[@]}"
 
 echo "==> Step 5: Cloning and building Picom (FTLabs animations fork)..."
 rm -rf picom
-git clone --depth=1 https://github.com/r0-zero/picom
+git clone --depth=1 https://github.com/r0-zero/picom.git
 cd picom
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
 sudo ninja -C build install
 cd ..
 
-echo "==> Step 6: Cloning and building Ly Display Manager..."
+echo "==> Step 6: Cloning and building Ly Display Manager (Stable Release v1.0.1)..."
 rm -rf ly ly-void
-git clone --depth=1 https://github.com/fairyglade/ly
+# Клонируем стабильный тег v1.0.1 для полной совместимости с компилятором Zig в Void
+git clone --branch v1.0.1 --depth=1 https://github.com/fairyglade/ly.git
 cd ly
 
-# ИСПРАВЛЕНИЕ: Заменяем .name = .ly на строковый литерал .name = "ly" для старых версий Zig
-echo "Applying compatibility patch for build.zig.zon..."
-sed -i 's/\.name = \.ly/\.name = "ly"/g' build.zig.zon
-
-# Запуск компиляции дисплейного менеджера
+# Компиляция средствами Zig
 zig build installexe -Dinit_system=runit
 
 # Safely disabling default tty2 agetty to clear path for Ly
@@ -141,4 +138,15 @@ if [ -f "$HOME/.config/sxhkd/sxhkdrc" ]; then
     chmod -v +x "$HOME/.config/sxhkd/sxhkdrc"
 fi
 
-echo -e "\n✓ SUCCESS: System build completed. Please reboot your machine."
+# ==========================================
+# 5. POST-INSTALL CONFIGURATION
+# ==========================================
+
+echo "==> Step 10: Setting Fish shell as default..."
+# Добавляем fish в разрешенные шеллы, если его там нет, и меняем для текущего юзера
+if ! grep -q "/usr/bin/fish" /etc/shells; then
+    echo "/usr/bin/fish" | sudo tee -a /etc/shells
+fi
+chsh -s /usr/bin/fish "$USER"
+
+echo -e "\n✓ SUCCESS: System build completed. Please reboot your machine to apply all changes!"
