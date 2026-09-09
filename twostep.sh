@@ -62,7 +62,7 @@ sudo cp -v wall.jpg "$HOME/wallpapers/"
 
 # Copy fish config
 echo -e "Copy fish config..."
-sudo cp -r -v cachyos-fish-config /usr/share/
+sudo cp -r -v fish-config "$HOME/.config/"
 
 # Copy dotfiles
 echo -e "Copy dotfiles..."
