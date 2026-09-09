@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo xbps-install -S base-devel meson ninja cmake libev-devel xcb-util-renderutil-devel xcb-util-image-devel pixman-devel pkgconfig uthash pcre2-devel dbus-devel glu-devel libconfig-devel libepoxy-devel
+
 # Copy wallpaper
 echo -e "Copy wallpaper.."
 sudo mkdir -p "$HOME/wallpapers/"
