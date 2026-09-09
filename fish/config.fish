@@ -78,7 +78,6 @@ alias ls='eza -al --color=always --group-directories-first --icons=always'
 alias la='eza -a --color=always --group-directories-first --icons=always'
 alias ll='eza -l --color=always --group-directories-first --icons=always'
 alias lt='eza -aT --color=always --group-directories-first --icons=always'
-alias l.="eza -a | grep -e '^\.'"
 
 alias grubup="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias tarnow='tar -acf '
@@ -98,6 +97,4 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'
 alias cleanup='sudo xbps-remove -o && sudo xbps-remove -y -O'
-
 alias clhis='history --clear'
-
