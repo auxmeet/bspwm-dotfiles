@@ -10,7 +10,7 @@ REPOS=(
 echo -e "Installing repositories..."
 for package in "${REPOS[@]}"; do
     echo "Installing repo $package..."
-    sudo xbps-install -S "$package" -yu 
+    sudo xbps-install -S "$package" -yu > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "✓ $package installed"
     else
@@ -46,13 +46,13 @@ PACKAGES=(
 
 # xbps update
 echo -e "System update..."
-sudo xbps-install -Syu
+sudo xbps-install -Syu > /dev/null 2>&1
 
 # xbps install
 echo -e "Installing utilities..."
 for package in "${PACKAGES[@]}"; do
     echo "Installing $package..."
-    sudo xbps-install -S "$package" -yu 
+    sudo xbps-install -S "$package" -yu > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "✓ $package installed"
     else
