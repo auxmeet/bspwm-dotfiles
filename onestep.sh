@@ -29,14 +29,14 @@ PACKAGES=(
 )
 
 # xbps update
-echo -e "Update pacman..."
-xbps-install -Syu > /dev/null 2>&1
+echo -e "System update..."
+xbps-install -Syu
 
 # xbps install
 echo -e "Installing utilities..."
 for package in "${PACKAGES[@]}"; do
     echo "Installing $package..."
-    sudo xbps-install -S "$package" -yu > /dev/null 2>&1
+    sudo xbps-install -S "$package" -yu 
     if [ $? -eq 0 ]; then
         echo -e "✓ $package installed"
     else
