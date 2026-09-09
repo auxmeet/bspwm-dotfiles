@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Pacman Packages
-PACKAGESPACMAN=(
+# xbps packages
+PACKAGES=(
     "bspwm"
     "sxhkd"
     "rofi"
@@ -28,15 +28,15 @@ PACKAGESPACMAN=(
     "ly"
 )
 
-# Pacman Update
+# xbps update
 echo -e "Update pacman..."
-pacman -Syu --noconfirm --needed > /dev/null 2>&1
+xbps-install -Syu > /dev/null 2>&1
 
-# Pacman Install
+# xbps install
 echo -e "Installing utilities..."
-for package in "${PACKAGESPACMAN[@]}"; do
+for package in "${PACKAGES[@]}"; do
     echo "Installing $package..."
-    sudo pacman -S "$package" --noconfirm --needed > /dev/null 2>&1
+    sudo xbps-install -S "$package" -yu > /dev/null 2>&1
     if [ $? -eq 0 ]; then
         echo -e "✓ $package installed"
     else
