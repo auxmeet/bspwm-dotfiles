@@ -42,7 +42,6 @@ PACKAGES=(
     "thunar-volman"
     "mousepad"
     "gamemode"
-    "lib32-gamemode"
 )
 
 # xbps update
