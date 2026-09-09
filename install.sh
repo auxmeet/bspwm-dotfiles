@@ -10,7 +10,7 @@ REPOS=(
 
 # Core system utilities and Xorg server components
 SYSTEM_PACKAGES=(
-    "fish"
+    "fish-shell"
     "udiskie"
     "udisks2"
     "bspwm"
