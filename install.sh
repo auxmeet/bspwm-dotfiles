@@ -40,7 +40,7 @@ BUILD_DEPS=(
     "ninja"
     "cmake" 
     "zig"
-    "libev-development"
+    "libev-devel"
     "xcb-util-renderutil-development"
     "xcb-util-image-development"
     "pixman-development"
