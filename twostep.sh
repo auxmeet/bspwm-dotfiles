@@ -1,6 +1,51 @@
 #!/bin/bash
+# utils for build
+BUILDUTILS=(
+    "base-devel"
+    "meson"
+    "ninja"
+    "cmake" 
+    "libev-devel"
+    "xcb-util-renderutil-devel"
+    "xcb-util-image-devel"
+    "pixman-devel"
+    "pkgconfig"
+    "uthash"
+    "pcre2-devel"
+    "dbus-devel"
+    "glu-devel"
+    "libconfig-devel"
+    "libepoxy-devel"
+)
 
-sudo xbps-install -S base-devel meson ninja cmake libev-devel xcb-util-renderutil-devel xcb-util-image-devel pixman-devel pkgconfig uthash pcre2-devel dbus-devel glu-devel libconfig-devel libepoxy-devel
+echo -e "Installing utils..."
+for package in "${BUILDUTILS[@]}"; do
+    echo "Installing $package..."
+    sudo xbps-install -S "$package" -yu 
+    if [ $? -eq 0 ]; then
+        echo -e "✓ $package installed"
+    else
+        echo -e "✗ Error while installing $package"
+    fi
+done
+
+# Build Picom
+git clone https://github.com/r0-zero/picom
+cd picom-ftlabs
+meson setup build --buildtype=release --prefix=/usr
+ninja -C build
+sudo ninja -C build install
+..
+
+# Build
+git clone https://github.com/cylgom/ly.git
+cd ly
+make github
+make
+sudo make install
+sudo ln -s /etc/sv/ly-runit-service /var/service/
+sudo rm /var/service/agetty-tty2
+..
 
 # Copy wallpaper
 echo -e "Copy wallpaper.."
