@@ -35,7 +35,7 @@ cd picom-ftlabs
 meson setup build --buildtype=release --prefix=/usr
 ninja -C build
 sudo ninja -C build install
-..
+cd ..
 
 # Build
 git clone https://github.com/cylgom/ly.git
@@ -45,7 +45,7 @@ make
 sudo make install
 sudo ln -s /etc/sv/ly-runit-service /var/service/
 sudo rm /var/service/agetty-tty2
-..
+cd ..
 
 # Copy wallpaper
 echo -e "Copy wallpaper.."
