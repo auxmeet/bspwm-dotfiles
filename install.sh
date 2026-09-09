@@ -43,7 +43,6 @@ BUILD_DEPS=(
     "meson"
     "ninja"
     "cmake" 
-    "zig"
     "libev-devel"
     "xcb-util-renderutil-devel"
     "xcb-util-image-devel"
@@ -87,32 +86,22 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
-echo "==> Step 6: Cloning and building Ly Display Manager (Compatible Stable Branch)..."
+echo "==> Step 6: Cloning and building Ly Display Manager (Void Linux Fork)..."
 rm -rf ly ly-void
-# Скачиваем стабильный срез, полностью совместимый с компилятором Zig в Void Linux
-git clone --branch v0.6.0 --depth=1 https://github.com/fairyglade/ly|| git clone --depth=1 https://github.com/fairyglade/ly
-cd ly
+# Клонируем оригинальный форк на C99 специально под Void Linux
+git clone https://github.com/drozdowsky/ly-void
+cd ly-void
 
-# Проверяем старый метод сборки (make), так как старые версии Ly не использовали Zig, 
-# что гарантирует отсутствие ошибок компилятора LazyPath!
-if [ -f "Makefile" ]; then
-    echo "Building Ly via GNU Make..."
-    make
-    sudo make install
-    sudo make flags
-else
-    echo "Building Ly via Zig Build System..."
-    zig build installexe -Dinit_system=runit
-fi
+# Сборка традиционным методом через GNU Make
+make github
+make
+sudo make install
 
-# Safely disabling default tty2 agetty to clear path for Ly
-sudo unlink /var/service/agetty-tty2 || true
-if [ -d "/etc/sv/agetty-tty2" ]; then
-    sudo touch /etc/sv/agetty-tty2/down || true
-fi
+# Отключаем стандартный agetty на tty2, чтобы избежать конфликтов
+sudo rm -f /var/service/agetty-tty2 || true
 
-# Linking Ly binary to Runit services
-sudo ln -sf /etc/sv/ly /var/service/
+# Включаем и активируем runit-службу для ly-void
+sudo ln -sf /etc/sv/ly-runit-service /var/service/
 cd ..
 
 # ==========================================
