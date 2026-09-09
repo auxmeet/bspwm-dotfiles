@@ -91,6 +91,12 @@ echo "==> Step 6: Cloning and building Ly Display Manager..."
 rm -rf ly ly-void
 git clone --depth=1 https://github.com/fairyglade/ly
 cd ly
+
+# ИСПРАВЛЕНИЕ: Заменяем .name = .ly на строковый литерал .name = "ly" для старых версий Zig
+echo "Applying compatibility patch for build.zig.zon..."
+sed -i 's/\.name = \.ly/\.name = "ly"/g' build.zig.zon
+
+# Запуск компиляции дисплейного менеджера
 zig build installexe -Dinit_system=runit
 
 # Safely disabling default tty2 agetty to clear path for Ly
